@@ -3,13 +3,35 @@ var LinkedList = function() {
   list.head = null;
   list.tail = null;
 
-  list.addToTail = function(value) {
+  list.addToTail = function(value) { 
+    var tailnode = Node(value);
+    if (this.tail) {
+      this.tail.next = tailnode;
+    } 
+    this.tail = tailnode;
+    if (this.head === null) {
+      this.head = tailnode;
+    }
   };
 
   list.removeHead = function() {
+    // if (this.head) {
+      
+    // }
+    var removed = this.head.value;
+    this.head = this.head.next;
+    return removed;
   };
 
   list.contains = function(target) {
+    var current = this.head;
+    while (current) {
+      if (current.value === target) {
+        return true;
+      }
+      current = current.next;
+    }
+    return false;
   };
 
   return list;
