@@ -7,7 +7,9 @@ var Set = function() {
 var setPrototype = {};
 
 setPrototype.add = function(item) {
-  this[item] = item;
+  if (!this.hasOwnProperty(item)) {
+    this[item] = item;
+  }
 };
 
 setPrototype.contains = function(item) {
@@ -21,3 +23,7 @@ setPrototype.remove = function(item) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+// add is linear --> O(n)
+// contains is linear --> O(n)
+// remove is constant --> O(1)
