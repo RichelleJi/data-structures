@@ -16,17 +16,18 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  for (var elem in this.children) {
-    if (this.children[elem].value === target) {
-      return true;
-    }
-    for (var element in this.children[elem].children) {
-      if (this.children[elem].children[element].value === target) {
-        return true;
+  var equals = false;
+  var recursive = function(tree) {
+    for (var i = 0; i < tree.length; i++) {
+      if (tree[i].value === target) {
+        equals = true;
+      } else {
+        recursive(tree[i].children);
       }
     }
-  }
-  return false;
+  };
+  recursive(this.children);
+  return equals;
 };
 
 

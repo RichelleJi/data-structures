@@ -5,6 +5,7 @@ var LinkedList = function() {
 
   list.addToTail = function(value) { 
     var tailnode = Node(value);
+
     if (this.tail) {
       this.tail.next = tailnode;
     } 
@@ -15,9 +16,7 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-    // if (this.head) {
-      
-    // }
+
     var removed = this.head.value;
     this.head = this.head.next;
     return removed;
