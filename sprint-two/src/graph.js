@@ -30,6 +30,9 @@ Graph.prototype.removeNode = function(node) {
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
+  if (!this[fromNode] || !this[toNode]) {
+    return false;
+  }
   for (var item in this[fromNode]['collection']) {
     for (var item2 in this[toNode]['collection']) {
       if (item === item2) {
@@ -50,7 +53,17 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
-  this[fromNode] = {'collection': []};
+  // this[fromNode] = {'collection': []};
+  for (var i in this[fromNode]['collection']) {
+    if (this[fromNode]['collection'][i] === toNode) {
+      this[fromNode]['collection'].splice(i, 1);
+    }
+  }
+  for (var y in this[toNode]['collection']) {
+    if (this[toNode]['collection'][y] === fromNode) {
+      this[toNode]['collection'].splice(y, 1);
+    }
+  }
 };
 
 // Pass in a callback which will be executed on each node of the graph.

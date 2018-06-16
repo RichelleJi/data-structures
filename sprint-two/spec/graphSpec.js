@@ -53,6 +53,19 @@ describe('graph', function() {
     graph.removeNode(5);
     expect(graph.hasEdge(4, 5)).to.equal(false);
   });
+  
+  it('should remove edges from all nodes tied to the node removed', function() {
+    graph.addNode(4);
+    graph.addNode(5);
+    graph.addNode(6);
+    graph.addEdge(5, 4);
+    graph.addEdge(5, 6);
+    graph.addEdge(4, 6);
+    expect(graph.hasEdge(4, 5)).to.equal(true);
+    graph.removeNode(5);
+    expect(graph.hasEdge(4, 5)).to.equal(false);
+    expect(graph.hasEdge(4, 6)).to.equal(true);
+  });
 
   it('should execute a callback on each node in the graph', function() {
     var connectToFive = function(item) {
