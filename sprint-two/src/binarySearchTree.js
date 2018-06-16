@@ -43,32 +43,18 @@ bstMethods.contains = function(value) {
 
 bstMethods.depthFirstLog = function(cb) {
   cb(this.value);
-
-  // if there is left, keep going left until null
-      //do something to that value
-
-  // while(obj.left){
-  //   cb(obj.value);
-    
-  // }
-  
-
-  //check if there's right, check children 
-      //do something to the left until null 
-
-
-  // go until left is null, then add right
-
-  // 
-
-
-  } else {
-    if (obj.right && ) {
-      
-  //   }
-  // }
+  if (this.left !== null) {
+    this.left.depthFirstLog(cb);
+  }
+  if (this.right !== null) {
+    this.right.depthFirstLog(cb);
+  }
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+// insert() is O(n^2)
+// contains() is O(n^2)
+// depthFirstLog() is linear O(n)
