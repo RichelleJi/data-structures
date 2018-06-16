@@ -50,6 +50,12 @@ describe('linkedList', function() {
     linkedList.removeHead();
     expect(linkedList.contains(4)).to.equal(false);
   });
+  
+  it('should accept function as a value', function() {
+    var test = function() { return 1; };
+    linkedList.addToTail(test);
+    expect(linkedList.contains(test)).to.equal(true);
+  });
 
   // add more tests here to test the functionality of linkedList
 });
