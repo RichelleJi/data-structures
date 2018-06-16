@@ -7,17 +7,27 @@ var Set = function() {
 var setPrototype = {};
 
 setPrototype.add = function(item) {
-  if (!this.hasOwnProperty(item)) {
-    this[item] = item;
+  if (!this._storage.hasOwnProperty(item)) {
+    this._storage[item] = item;
   }
 };
 
 setPrototype.contains = function(item) {
-  return (this.hasOwnProperty(item)) ? true : false;
+  return (this._storage.hasOwnProperty(item)) ? true : false;
 };
 
 setPrototype.remove = function(item) {
-  delete this[item];
+  delete this._storage[item];
+};
+
+setPrototype.unique = function(string) {
+  var count = 0;
+  for (var elem in this._storage) {
+    if (this._storage[elem] === string) {
+      count++;
+    }
+  }
+  return (count === 1) ? true : false;
 };
 
 /*
