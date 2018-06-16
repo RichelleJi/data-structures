@@ -42,7 +42,31 @@ bstMethods.contains = function(value) {
 
 
 bstMethods.depthFirstLog = function(cb) {
+  cb(this.value);
+
+  // if there is left, keep going left until null
+      //do something to that value
+
+  // while(obj.left){
+  //   cb(obj.value);
+    
+  // }
   
+
+  //check if there's right, check children 
+      //do something to the left until null 
+
+
+  // go until left is null, then add right
+
+  // 
+
+
+  } else {
+    if (obj.right && ) {
+      
+  //   }
+  // }
 };
 
 /*
